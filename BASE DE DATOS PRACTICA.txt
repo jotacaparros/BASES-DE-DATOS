@@ -1,0 +1,93 @@
+CREATE DATABASE MoMA ;
+
+USE MoMA;
+
+ CREATE TABLE Mecenas(
+-> codigo INT(4) PRIMARY KEY,
+-> nombre VARCHAR(50),
+-> ciudad VARCHAR(50),
+-> pais VARCHAR(50));
+
+ALTER TABLE Mecenas MODIFY
+-> codigo INT AUTO_INCREMENT;
+
+> CREATE TABLE Autor(
+-> id INT(4) PRIMARY KEY AUTO_INCREMENT,
+-> nombre VARCHAR(50),
+-> pais VARCHAR(50),
+-> f_nac VARCHAR(10),
+-> f_def VARCHAR(10));
+
+CREATE TABLE Galeria(
+-> codigo INT(4) PRIMARY KEY AUTO_INCREMENT, 
+-> nombre VARCHAR(50), 
+-> direccion VARCHAR(50), 
+-> poblacion VARCHAR(50),
+-> provincia VARCHAR(50));
+
+<!--Rafa lo siguiente lo hice otro día y le cambié cosas a las tablas que ya tenía. Te pongo como dijiste los SHOW CREATE TABLE-->
+                                  
+| autor | CREATE TABLE `autor` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(50) DEFAULT NULL,
+  `pais` varchar(50) DEFAULT 'España',
+  `f_nac` date NOT NULL,
+  `f_def` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  CONSTRAINT `autor_chk_1` CHECK ((`f_def` > `f_nac`))
+) 
+
+| expone | CREATE TABLE `expone` (
+  `galeria` int NOT NULL,
+  `obra` int NOT NULL,
+  PRIMARY KEY (`galeria`,`obra`),
+  KEY `obra` (`obra`),
+  CONSTRAINT `expone_ibfk_1` FOREIGN KEY (`galeria`) REFERENCES `galeria` (`codigo`),
+  CONSTRAINT `expone_ibfk_2` FOREIGN KEY (`obra`) REFERENCES `obra` (`codigo`)
+) 
+
+| galeria | CREATE TABLE `galeria` (
+  `codigo` int NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(50) DEFAULT NULL,
+  `direccion` varchar(50) DEFAULT NULL,
+  `poblacion` varchar(50) DEFAULT NULL,
+  `provincia` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`codigo`)
+) 
+
+| maestro | CREATE TABLE `maestro` (
+  `maestro` int NOT NULL,
+  `aprendiz` int NOT NULL,
+  PRIMARY KEY (`maestro`,`aprendiz`),
+  KEY `aprendiz` (`aprendiz`),
+  CONSTRAINT `maestro_ibfk_1` FOREIGN KEY (`maestro`) REFERENCES `autor` (`id`),
+  CONSTRAINT `maestro_ibfk_2` FOREIGN KEY (`aprendiz`) REFERENCES `autor` (`id`)
+) 
+
+| mecenas | CREATE TABLE `mecenas` (
+  `codigo` int NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(50) NOT NULL,
+  `ciudad` varchar(50) DEFAULT NULL,
+  `pais` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`codigo`)
+)
+
+| obra  | CREATE TABLE `obra` (
+  `codigo` int NOT NULL AUTO_INCREMENT,
+  `autor` int DEFAULT NULL,
+  `titulo` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`codigo`),
+  KEY `autor` (`autor`),
+  CONSTRAINT `obra_ibfk_1` FOREIGN KEY (`autor`) REFERENCES `autor` (`id`)
+) 
+
+| patrocina | CREATE TABLE `patrocina` (
+  `mecenas` int NOT NULL,
+  `autor` int NOT NULL,
+  `f_inicio` date DEFAULT NULL,
+  `f_fin` date DEFAULT NULL,
+  PRIMARY KEY (`mecenas`,`autor`),
+  KEY `autor` (`autor`),
+  CONSTRAINT `patrocina_ibfk_1` FOREIGN KEY (`mecenas`) REFERENCES `mecenas` (`codigo`),
+  CONSTRAINT `patrocina_ibfk_2` FOREIGN KEY (`autor`) REFERENCES `autor` (`id`),
+  CONSTRAINT `patrocina_chk_1` CHECK ((`f_fin` > `f_inicio`))
