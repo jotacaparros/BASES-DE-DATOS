@@ -1,0 +1,21 @@
+ 
+1 Principales estándares del sistema de cableado estructurado: 
+	
+	ANSI/TIA/EIA-568C: define las características del cableado.
+	ANSI/TIA/EIA-569C: define las características de los espacios y las canalizaciones en la infraestructura.
+
+2 ¿Qué es el área de trabajo?
+
+	El área de trabajo lo conforman los lugares habituales de trabajo o aquellos donde se ubica un equipo o dispositivo que se 	conecte a la red
+
+3 ¿Qué es el subsistema vertical (backbone)?
+
+	Compuesto por el cableado que va desde cada uno de los distribuidores de planta al distribuidor del edificio.
+
+4 ¿Qué es la conexión a tierra del sistema de cableado estructurado?
+
+	La conexión a tierra es un elemento fundamental que tiene como objetivo evitar el paso de la corriente a través de elementos 	que puedan estar en contacto con el usuario o que puedan dañar el equipamiento.
+
+5 ¿Qué es el subsistema horizontal?
+
+	Es el espacio que comprende todas las áreas de trabajo de una planta y los elementos empleados para cablearlos hasta el 	distribuidor de planta.
