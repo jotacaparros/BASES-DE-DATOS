@@ -1,0 +1,11 @@
+<- - - - - - - - - - - - - PRACTICA 1 - - - - - - - - - - - - - - - >
+
+1- select * from municipio, provincia;
+
+<- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ->
+
+2- select * from municipio, provincia where municipio.provincia = provincia.codigo;
+
+<- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ->
+
+3 - select municipio.nombre, provincia.nombre from municipio, provincia where municipio.provincia = provincia.codigo;
