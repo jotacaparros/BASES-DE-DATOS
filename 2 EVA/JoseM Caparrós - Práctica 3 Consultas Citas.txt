@@ -1,0 +1,143 @@
+
+1 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+ MySQL  localhost:3306 ssl  citas  SQL > SELECT nom_usuario, email FROM Perfil WHERE trabajo = 'Policía';
++-------------+-----------------------+
+| nom_usuario | email                 |
++-------------+-----------------------+
+| apruiz      | apruiz@webcitas.com   |
+| stmedina    | stmedina@webcitas.com |
++-------------+-----------------------+
+2 rows in set (0.0062 sec)
+
+2 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+ MySQL  localhost:3306 ssl  citas  SQL > SELECT nom_usuario, email, sexo FROM Perfil WHERE fechNac < '1988-01-01';
++-------------+-------------------------+------+
+| nom_usuario | email                   | sexo |
++-------------+-------------------------+------+
+| mrreyes     | mrreyes@webcitas.com    | F    |
+| lpmedina    | lpmedina@webcitas.com   | F    |
+| vgmartinez  | vgmartinez@webcitas.com | F    |
+| rmsalazar   | rmsalazar@webcitas.com  | F    |
+| apruiz      | apruiz@webcitas.com     | M    |
+| stmedina    | stmedina@webcitas.com   | F    |
++-------------+-------------------------+------+
+6 rows in set (0.0053 sec)
+
+3 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+MySQL  localhost:3306 ssl  citas  SQL > SELECT cita, nom_usuario FROM
+                                      -> Encuesta WHERE valoracion = 'mal';
++------+-------------+
+| cita | nom_usuario |
++------+-------------+
+|    1 | emgonzalez  |
+|    5 | esfigueroa  |
+|    5 | rvquiroga   |
++------+-------------+
+3 rows in set (0.0009 sec)
+
+4 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+ MySQL  localhost:3306 ssl  citas  SQL > SELECT nom_usuario_2 FROM Gusta WHERE nom_usuario_1 = 'djrodrigo';
++---------------+
+| nom_usuario_2 |
++---------------+
+| avmiranda     |
+| lpmedina      |
+| rmsalazar     |
+| vgmartinez    |
++---------------+
+4 rows in set (0.0105 sec)
+
+5 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+ MySQL  localhost:3306 ssl  citas  SQL > SELECT cita FROM
+                                      -> Encuesta WHERE nom_usuario = 'vgmartinez';
++------+
+| cita |
++------+
+|    6 |
+|    7 |
++------+
+2 rows in set (0.0009 sec)
+
+6 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+ MySQL  localhost:3306 ssl  citas  SQL	 > SELECT nom_usuario, aficion, frecuencia FROM 
+					-> Practica WHERE aficion = 3 OR aficion = 4 
+					-> OR aficion = 5 OR aficion = 6;
+
++-------------+---------+-------------------+
+| nom_usuario | aficion | frecuencia        |
++-------------+---------+-------------------+
+| cgramos     |       4 | a diario          |
+| djrodrigo   |       4 | todos los meses   |
+| emgonzalez  |       3 | a diario          |
+| esfigueroa  |       4 | a diario          |
+| jgbermudez  |       4 | a diario          |
+| lpmedina    |       3 | a diario          |
+| mrreyes     |       3 | a diario          |
+| rmsalazar   |       6 | todos los meses   |
+| rvquiroga   |       5 | todos los meses   |
+| rvquiroga   |       6 | todas las semanas |
+| sbortega    |       3 | a diario          |
+| vgmartinez  |       5 | todas las semanas |
+| vprodriguez |       3 | todas las semanas |
++-------------+---------+-------------------+
+13 rows in set (0.0008 sec)
+
+7 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+ MySQL  localhost:3306 ssl  citas  SQL > SELECT DISTINCT formacion FROM Formacion;
++----------------------+
+| formacion            |
++----------------------+
+| Bachillerato         |
+| Graduado en Historia |
+| Magisterio           |
+| Ingeniero Industrial |
+| Graduado en Medicina |
+| FP Sup Estetica      |
+| Matemáticas          |
+| FP Sup Fotografia    |
++----------------------+
+8 rows in set (0.0063 sec)
+
+8 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+ MySQL  localhost:3306 ssl  citas  SQL > SELECT nom_usuario FROM Usuario WHERE nif LIKE '_%L';
++-------------+
+| nom_usuario |
++-------------+
+| lpmedina    |
+| sggarcia    |
++-------------+
+2 rows in set (0.0007 sec)
+
+9 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+ MySQL  localhost:3306 ssl  citas  SQL > SELECT nombre, telefono FROM Usuario WHERE nombre LIKE '_%Perez'
+                                      -> OR nombre LIKE '_%Perez%_';
++------------------------+-----------+
+| nombre                 | telefono  |
++------------------------+-----------+
+| Lucia Perez Medina     | 670897834 |
+| Victor Perez Rodriguez | 659434491 |
++------------------------+-----------+
+2 rows in set (0.0009 sec)
+
+10 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+ MySQL  localhost:3306 ssl  citas  SQL > SELECT nom_usuario FROM
+                                      -> Perfil WHERE sexo = 'F' AND
+                                      -> religion = 'Ateo';
++-------------+
+| nom_usuario |
++-------------+
+| cgramos     |
+| lpmedina    |
+| vgmartinez  |
++-------------+
+3 rows in set (0.0008 sec)

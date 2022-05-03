@@ -1,0 +1,34 @@
+ MySQL  localhost:3306 ssl  citas  SQL > SHOW CREATE TABLE Practica;
++----------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Table    | Create Table                                                                                                                                                                                                                                                                                                                                                                                                               |
++----------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Practica | CREATE TABLE `practica` (
+  `nom_usuario` varchar(20) NOT NULL,
+  `aficion` int NOT NULL,
+  PRIMARY KEY (`nom_usuario`,`aficion`),
+  KEY `aficion` (`aficion`),
+  CONSTRAINT `practica_ibfk_1` FOREIGN KEY (`nom_usuario`) REFERENCES `usuario` (`nom_usuario`),
+  CONSTRAINT `practica_ibfk_2` FOREIGN KEY (`aficion`) REFERENCES `aficion` (`codigo`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci |
++----------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+1 row in set (0.0068 sec)
+ MySQL  localhost:3306 ssl  citas  SQL > ALTER TABLE Practica
+                                      -> DROP CONSTRAINT practica_ibfk_1;
+Query OK, 0 rows affected (0.0195 sec)
+
+Records: 0  Duplicates: 0  Warnings: 0
+ MySQL  localhost:3306 ssl  citas  SQL > ALTER TABLE Practica DROP CONSTRAINT practica_ibfk_2;
+Query OK, 0 rows affected (0.0195 sec)
+
+Records: 0  Duplicates: 0  Warnings: 0
+ MySQL  localhost:3306 ssl  citas  SQL > ALTER TABLE Practica
+                                      -> ADD CONSTRAINT practica_fk_1
+                                      -> FOREIGN KEY (nom_usuario) REFERENCES
+                                      -> Usuario (nom_usuario)
+                                      -> ON DELETE CASCADE
+                                      -> ON UPDATE CASCADE,
+                                      -> ADD CONSTRAINT practica_fk_2
+                                      -> FOREIGN KEY (aficion) REFERENCES
+                                      -> Aficion (codigo)
+                                      -> ON DELETE CASCADE
+                                      -> ON UPDATE CASCADE;

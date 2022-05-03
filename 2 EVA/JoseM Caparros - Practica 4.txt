@@ -1,0 +1,121 @@
+ MySQL  localhost:3306 ssl  SQL > CREATE DATABASE inmobiliaria;
+Query OK, 1 row affected (0.0343 sec)
+ 
+MySQL  localhost:3306 ssl  SQL > USE inmobiliaria;
+Default schema set to `inmobiliaria`.
+Fetching table and column names from `inmobiliaria` for auto-completion... Press ^C to stop.
+
+<! - - - - - - - - - - - - - - - AGENCIA - - - - - - - - - - - - - - ->
+
+ MySQL  localhost:3306 ssl  inmobiliaria  SQL > CREATE TABLE agencia (
+                                             -> codigo INT PRIMARY KEY,
+                                             -> direccion VARCHAR(50),
+                                             -> cif VARCHAR(50));
+
+| agencia | CREATE TABLE `agencia` (
+  `codigo` int NOT NULL,
+  `direccion` varchar(50) DEFAULT NULL,
+  `cif` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`codigo`))
+
+<! - - - - - - - - - - - - - - - PROPIETARIO - - - - - - - - - - - - - - ->
+
+
+ MySQL  localhost:3306 ssl  inmobiliaria  SQL > CREATE TABLE propietario (
+                                             -> nif INT PRIMARY KEY,
+                                             -> nombre VARCHAR(50),
+                                             -> apellido VARCHAR(50),
+                                             -> telefono SMALLINT,
+                                             -> direccion VARCHAR(50),
+                                             -> email VARCHAR(50));
+
+| propietario | CREATE TABLE `propietario` (
+  `nif` int NOT NULL,
+  `nombre` varchar(50) DEFAULT NULL,
+  `apellido` varchar(50) DEFAULT NULL,
+  `telefono` smallint DEFAULT NULL,
+  `direccion` varchar(50) DEFAULT NULL,
+  `email` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`nif`))
+
+<! - - - - - - - - - - - - - - - VIVIENDA - - - - - - - - - - - - - - ->
+
+
+ MySQL  localhost:3306 ssl  inmobiliaria  SQL > CREATE TABLE vivienda (
+						codigo INT PRIMARY KEY, 
+						calle VARCHAR(50), 
+						numero SMALLINT, 
+						piso SMALLINT,
+						cp SMALLINT,
+						poblacion VARCHAR(50),
+						descripcion VARCHAR(50),
+						fk_agencia INT,
+						fk_propietario INT,
+						FOREIGN KEY (fk_agencia) REFERENCES agencia (codigo),
+						FOREIGN KEY (fk_propietario) REFERENCES propietario (nif));
+
+| vivienda | CREATE TABLE `vivienda` (
+  `codigo` int NOT NULL,
+  `calle` varchar(50) DEFAULT NULL,
+  `numero` smallint DEFAULT NULL,
+  `piso` smallint DEFAULT NULL,
+  `cp` smallint DEFAULT NULL,
+  `poblacion` varchar(50) DEFAULT NULL,
+  `descripcion` varchar(50) DEFAULT NULL,
+  `fk_agencia` int DEFAULT NULL,
+  `fk_propietario` int DEFAULT NULL,
+  PRIMARY KEY (`codigo`),
+  KEY `fk_agencia` (`fk_agencia`),
+  KEY `fk_propietario` (`fk_propietario`),
+  CONSTRAINT `vivienda_ibfk_1` FOREIGN KEY (`fk_agencia`) REFERENCES `agencia` (`codigo`),
+  CONSTRAINT `vivienda_ibfk_2` FOREIGN KEY (`fk_propietario`) REFERENCES `propietario` (`nif`)
+
+<! - - - - - - - - - - - - - - - INQUILINO - - - - - - - - - - - - - - ->
+
+MySQL  localhost:3306 ssl  inmobiliaria  SQL > CREATE TABLE inquilino (
+                                             -> nif INT PRIMARY KEY,
+                                             -> nombre VARCHAR(50),
+                                             -> apellido VARCHAR(50),
+                                             -> telefono SMALLINT,
+                                             -> preferencias VARCHAR(50),
+                                             -> fecha_nac DATE);
+
+| inquilino | CREATE TABLE `inquilino` (
+  `nif` int NOT NULL,
+  `nombre` varchar(50) DEFAULT NULL,
+  `apellido` varchar(50) DEFAULT NULL,
+  `telefono` smallint DEFAULT NULL,
+  `preferencias` varchar(50) DEFAULT NULL,
+  `fecha_nac` date DEFAULT NULL,
+  PRIMARY KEY (`nif`))
+
+<! - - - - - - - - - - - - - - - ALQUILER - - - - - - - - - - - - - - ->
+
+
+ MySQL  localhost:3306 ssl  inmobiliaria  SQL > CREATE TABLE alquiler (
+                                             -> codigo INT PRIMARY KEY,
+                                             -> fecha_firma DATE,
+                                             -> fianza INT,
+                                             -> fecha_inicio DATE,
+                                             -> fecha_fin DATE,
+                                             -> importe_mes INT,
+                                             -> fk_inquilino INT,
+                                             -> fk_vivienda INT,
+                                             -> REFERENCES inquilino (nif),
+                                             -> FOREIGN KEY (fk_vivienda) ,
+                                             -> REFERENCES vivienda (codigo));
+
+| alquiler | CREATE TABLE `alquiler` (
+  `codigo` int NOT NULL,
+  `fecha_firma` date DEFAULT NULL,
+  `fianza` int DEFAULT NULL,
+  `fecha_inicio` date DEFAULT NULL,
+  `fecha_fin` date DEFAULT NULL,
+  `importe_mes` int DEFAULT NULL,
+  `fk_inquilino` int DEFAULT NULL,
+  `fk_vivienda` int DEFAULT NULL,
+  PRIMARY KEY (`codigo`),
+  KEY `fk_inquilino` (`fk_inquilino`),
+  KEY `fk_vivienda` (`fk_vivienda`),
+  CONSTRAINT `alquiler_ibfk_1` FOREIGN KEY (`fk_inquilino`) REFERENCES `inquilino` (`nif`),
+  CONSTRAINT `alquiler_ibfk_2` FOREIGN KEY (`fk_vivienda`) REFERENCES `vivienda` (`codigo`))
