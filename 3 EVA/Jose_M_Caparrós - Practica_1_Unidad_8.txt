@@ -9,3 +9,19 @@
 <- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ->
 
 3 - select municipio.nombre, provincia.nombre from municipio, provincia where municipio.provincia = provincia.codigo;
+
+<- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ->
+
+4 - select  municipio.nombre, provincia.nombre from municipio, provincia where municipio.nombre LIKE 'B%';
+
+<- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ->
+
+5 - select * from cliente as cli, municipio as mun;
+
+<- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ->
+
+6 - select * from cliente as cli, municipio as mun where mun.codigo = cli.municipio;
+
+<- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ->
+
+7 - select mun.nombre, count(*) from cliente as cli, municipio as mun where mun.codigo = cli.municipio group by mun.nombre;

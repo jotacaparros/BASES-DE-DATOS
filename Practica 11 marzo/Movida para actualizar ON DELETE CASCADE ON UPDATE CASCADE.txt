@@ -32,3 +32,25 @@ Records: 0  Duplicates: 0  Warnings: 0
                                       -> Aficion (codigo)
                                       -> ON DELETE CASCADE
                                       -> ON UPDATE CASCADE;
+
+
+ CREATE TABLE Perfil (
+nom_usuario VARCHAR(20) PRIMARY KEY,
+FOREIGN KEY (nom_usuario) REFERENCES
+Usuario (nom_usuario),
+ON DELETE CASCADE
+ON UPDATE CASCADE,
+email VARCHAR(45) NOT NULL UNIQUE
+
+
+
+CREATE TABLE Gusta (
+    -> nom_usuario_1 VARCHAR(20),
+    -> nom_usuario_2 VARCHAR(20),
+    -> PRIMARY KEY (nom_usuario_1, nom_usuario_2),
+    -> FOREIGN KEY (nom_usuario_1) REFERENCES
+    -> Usuario (nom_usuario) ON DELETE CASCADE ON UPDATE CASCADE,
+    -> FOREIGN KEY (nom_usuario_2) REFERENCES
+    -> Usuario (nom_usuario)
+    -> ON DELETE CASCADE
+    -> ON UPDATE CASCADE);

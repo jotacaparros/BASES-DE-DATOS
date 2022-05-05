@@ -1,0 +1,45 @@
+mysql> CREATE DATABASE parte1;
+Query OK, 1 row affected (0,01 sec)
+
+mysql> use parte1
+Database changed
+mysql> CREATE TABLE AcontecimientoHistórico (
+    -> id INT, 
+    -> fecha DATE,
+    -> descripción VARCHAR(50));
+Query OK, 0 rows affected (0,02 sec)
+
+mysql> CREATE TABLE Cliente (
+    -> dni INT,
+    -> nombre VARCHAR(50),
+    -> apellido VARCHAR(50));
+Query OK, 0 rows affected (0,01 sec)
+
+mysql> CREATE TABLE Alumno (
+    -> dni INT,
+    -> nombre VARCHAR(50),
+    -> teléfono INT);
+Query OK, 0 rows affected (0,01 sec)
+
+mysql> CREATE TABLE Artículo ( 
+id INT, nombre VARCHAR(50), 
+precio DECIMAL(5,2));
+Query OK, 0 rows affected (0,01 sec)
+
+mysql> ALTER TABLE Artículo ALTER precio SET DEFAULT 20.95;
+Query OK, 0 rows affected (0,02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> CREATE TABLE Libro ( isbn INT, título VARCHAR(50), 
+género VARCHAR(50) DEFAULT 'narrativa',
+añoPublicación DATE, 
+númeroPáginas INT);
+Query OK, 0 rows affected (0,01 sec)
+
+mysql> ALTER TABLE Libro MODIFY añoPublicación INT FIRST;
+Query OK, 0 rows affected (0,02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> ALTER TABLE Libro ALTER añoPublicación SET DEFAULT 2020;
+Query OK, 0 rows affected (0,01 sec)
+Records: 0  Duplicates: 0  Warnings: 0
