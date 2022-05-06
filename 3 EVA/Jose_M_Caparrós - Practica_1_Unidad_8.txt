@@ -25,3 +25,25 @@
 <- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ->
 
 7 - select mun.nombre, count(*) from cliente as cli, municipio as mun where mun.codigo = cli.municipio group by mun.nombre;
+
+<- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ->
+
+8 - (92) select ticket.codigo, ticket.fecha, cliente.nombre from ticket, cliente where ticket.cliente = cliente.codigo;
+    (99) select ticket.codigo, ticket.fecha, cliente.nombre from ticket inner join cliente on ticket.cliente = cliente.codigo;
+
+<- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ->
+
+9 - (92) select ticket.codigo, ticket.fecha, cliente.nombre, vendedor.nombre from ticket, cliente, vendedor;
+    (99) select ticket.codigo, ticket.fecha, cliente.nombre, vendedor.nombre from ticket inner join cliente inner join vendedor;
+
+<- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ->
+
+
+9 - (92) select ticket.codigo, linea_ticket.nlinea, articulo.descripcion, linea_ticket.cant from ticket, linea_ticket, articulo where ticket.codigo = linea_ticket.ticket and linea_ticket.ticket = 7;
+    (99)select ticket.codigo, linea_ticket.nlinea, articulo.descripcion, linea_ticket.cant from ticket inner join linea_ticket on ticket.codigo = linea_ticket.ticket inner join articulo on linea_ticket.ticket = 7;
+
+<- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ->
+
+10 - select ticket.codigo, ticket.fecha, cliente.nombre, vendedor.nombre from ticket, cliente, vendedor;
+     select ticket.codigo, ticket.fecha, cliente.nombre, vendedor.nombre from ticket inner join cliente inner join vendedor;
+
