@@ -1,0 +1,71 @@
+<- - - - - - - - - - - - - PRACTICA 2 - - - - - - - - - - - - - - - >
+
+13 - select ticket.codigo, ticket.fecha, cliente.nombre from ticket left join cliente on ticket.cliente = cliente.codigo;
+ 
+<- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ->
+
+14 - select cliente.nombre, cliente.direccion, municipio.nombre from cliente right join municipio on cliente.municipio = municipio.codigo;
+
+<- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ->
+
+15 - select linea_ticket.ticket, linea_ticket.nlinea, articulo.codigo, articulo.descripcion from articulo right join linea_ticket on linea_ticket.articulo = articulo.codigo where linea_ticket.ticket = 108;
+
+<- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ->
+
+16 - select linea_ticket.ticket, linea_ticket.nlinea, articulo.codigo, articulo.descripcion from linea_ticket left join articulo on linea_ticket.articulo = articulo.codigo where linea_ticket.ticket = 108;
+
+<- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ->
+
+17 - select municipio.nombre, count(cliente.municipio) from municipio left join cliente on cliente.municipio = municipio.codigo group by municipio.nombre;
+
+<- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ->
+
+18 - select municipio.nombre, count(cliente.municipio) from municipio left join cliente on cliente.municipio = municipio.codigo group by municipio.nombre;
+
+<- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ->
+
+19 - select ticket.codigo, ticket.fecha, vendedor.nombre, cliente.nombre from ticket left join cliente on cliente.codigo = ticket.cliente left join vendedor on vendedor.codigo = ticket.vendedor;
+
+<- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ->
+
+20 - select cliente.nombre, count(ticket.cliente) from cliente left join ticket on cliente.codigo = ticket.cliente group by ticket.cliente, cliente.nombre; <!Rafa, por que tengo que meter el count en el group by para que me aparezca un cliente con 0 tickets???>
+
+<- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ->
+
+21 - select vendedor.nombre, vendedor.codigo, sum(linea_ticket.precio) from vendedor left join ticket on vendedor.codigo = ticket.vendedor left join linea_ticket on linea_ticket.ticket = ticket.codigo group by vendedor.codigo; 
+
+<- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ->
+
+22 - select provincia.nombre, count(linea_ticket.ticket) from ticket left join linea_ticket on ticket.codigo = linea_ticket.ticket left join cliente on cliente.codigo = ticket.cliente left join municipio on municipio.codigo = cliente.municipio left join provincia on municipio.provincia = provincia.codigo group by provincia.nombre;
+
+<- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ->
+
+23 - select cliente.codigo, cliente.nombre, provincia.nombre from cliente, ticket, linea_ticket, municipio, provincia where provincia.codigo = municipio.provincia and municipio.codigo = cliente.municipio and cliente.codigo = ticket.cliente and ticket.codigo = linea_ticket.ticket and provincia.codigo = "CA" group by cliente.codigo having sum(cant*precio) > 100;
+
+<- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ->
+
+24 - select vendedor.nombre, jefe.nombre from vendedor, vendedor as jefe where vendedor.jefe = jefe.codigo;
+
+<- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ->
+
+25 - select asignatura.nombre, asignatura.curso, imparte.edificioAula, imparte.claseAula from asignatura left join imparte;
+
+<- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ->
+
+26 - select profesor nombre, apelldo1, apellido2, alumno.nombre, curso from profesor left join ensenya on profesor.dni = ensenya.profesor left join asignatura on ensenya.asignatura = asignatura.codigo;
+
+<- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ->
+
+27 - 
+
+<- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ->
+
+28 -
+
+<- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ->
+
+29 -  
+
+<- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ->
+
+30 - 

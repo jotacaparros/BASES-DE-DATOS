@@ -44,6 +44,16 @@
 
 <- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ->
 
-10 - select ticket.codigo, ticket.fecha, cliente.nombre, vendedor.nombre from ticket, cliente, vendedor;
-     select ticket.codigo, ticket.fecha, cliente.nombre, vendedor.nombre from ticket inner join cliente inner join vendedor;
+10 - (92) select ticket.codigo, ticket.fecha, cliente.nombre, vendedor.nombre from ticket, cliente, vendedor;
+     (99) select ticket.codigo, ticket.fecha, cliente.nombre, vendedor.nombre from ticket inner join cliente inner join vendedor;
+
+<- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ->
+
+11 - (92) select vendedor.nombre, vendedor.codigo, count(ticket.vendedor) from vendedor, ticket where ticket.vendedor = vendedor.codigo group by vendedor.codigo;
+     (99) select vendedor.nombre, vendedor.codigo, count(ticket.vendedor) from vendedor inner join ticket on ticket.vendedor = vendedor.codigo group by vendedor.codigo;
+
+<- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ->
+
+12 - (92) select ticket.codigo, ticket.fecha, cliente.nombre, cliente.direccion, cliente.cp, cliente.municipio from cliente, ticket where ticket.cliente = cliente.codigo;
+     (99) select ticket.codigo, ticket.fecha, cliente.nombre, cliente.direccion, cliente.cp, cliente.municipio from cliente inner join ticket on ticket.cliente = cliente.codigo;
 
