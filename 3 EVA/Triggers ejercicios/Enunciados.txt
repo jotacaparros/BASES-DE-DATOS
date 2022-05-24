@@ -1,0 +1,46 @@
+Los ejercicios a entregar son:
+
+Ejercicio 5 - resuelto
+Ejercicio 6 - a entregar
+Ejercicio 11 - resuelto
+Ejercicio 12 - a entregar
+Ejercicio 13 - resuelto la tabla productos
+Ejercicio 13 - entregar tabla categorias
+Ejercicio 14 - a entregar
+Ejercicio 15 - resuelto
+Ejercicio 16 - a entregar
+Ejercicio 17 - a entregar
+Ejercicio 19 - resuelto
+Ejercicio 21 - a entregar
+Ejercicio 23 - resuelto
+Ejercicio 26 - resuelto
+Ejercicio 27 - a entregar
+Ejercicio 28 - a entregar
+
+Ejercicio 12. Crea un trigger en la tabla artículos de la base de datos Q3ERP para que cuando se modifique un artículo verifique
+si el precio es positivo. En caso contrario pondrá el precio a cero.
+
+Ejercicio 13. Crea un trigger en todas las tablas de la base de datos Q3ERP que cada vez que se modifique algo se guarde la
+modificación en la tabla log.
+
+Ejercicio 14 Crea un trigger en todas las tablas de la base de datos Q3ERP para que cada vez que se borre un registro se guarde
+la información en la tabla log.
+
+Ejercicio 16. Escribe un procedimiento que reciba como entrada la nota de un alumno (numérico real) y un parámetro de salida
+(cadena de caracteres) con las siguientes condiciones:
+• [0, 5): Insuficiente
+• [5, 6): Aprobado
+• [6, 7): Bien
+• [7, 9): Notable
+• [9, 10]: Sobresaliente
+• En cualquier otro caso la nota no será válida.
+
+Ejercicio 17. Resuelva el procedimiento diseñado en el ejercicio anterior haciendo uso de la estructura de control CASE.
+
+Ejercicio 21. Repite el ejercicio anterior, pero modifícalo para pasarle por parámetro la cantidad de términos de la serie.
+
+Ejercicio 27. Escribe una función para la base de datos Q3ERP que devuelva el valor medio del precio de los productos de una
+determinada marca que se recibirá como parámetro de entrada.
+
+Ejercicio 28. Escribe una función para la base de datos Q3ERP que devuelva el valor mínimo del precio de los productos de una
+determinada marca que se recibirá como parámetro de entrada.
