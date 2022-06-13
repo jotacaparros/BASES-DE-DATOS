@@ -8,17 +8,19 @@ Ejercicio 13 - resuelto la tabla productos
 Ejercicio 13 - entregar tabla categorias
 Ejercicio 14 - a entregar
 Ejercicio 15 - resuelto
+
+
 Ejercicio 16 - a entregar
 Ejercicio 17 - a entregar
-Ejercicio 19 - resuelto
+		Ejercicio 19 - resuelto
+
 Ejercicio 21 - a entregar
-Ejercicio 23 - resuelto
-Ejercicio 26 - resuelto
+		Ejercicio 23 - resuelto
+		Ejercicio 26 - resuelto
 Ejercicio 27 - a entregar
 Ejercicio 28 - a entregar
 
-Ejercicio 12. Crea un trigger en la tabla artículos de la base de datos Q3ERP para que cuando se modifique un artículo verifique
-si el precio es positivo. En caso contrario pondrá el precio a cero.
+Ejercicio 12. Crea un trigger en la tabla artículos de la base de datos Q3ERP para que cuando se modifique un artículo verifique si el precio es positivo. En caso contrario pondrá el precio a cero.
 
 Ejercicio 13. Crea un trigger en todas las tablas de la base de datos Q3ERP que cada vez que se modifique algo se guarde la
 modificación en la tabla log.
